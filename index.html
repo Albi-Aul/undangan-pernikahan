@@ -9,7 +9,7 @@
 
   <meta property="og:title" content="Undangan Pernikahan Albi & Aul 💍" />
   <meta property="og:description" content="Dengan penuh cinta kami mengundang Anda untuk hadir di hari bahagia kami. Klik untuk membuka undangan." />
-  <meta property="og:image" content="https://albi-aul.github.io/undangan-pernikahan/cover.jpg" />
+  <meta property="og:image" content="cover.jpg" />
   <meta property="og:url" content="https://albi-aul.github.io/undangan-pernikahan/" />
   <meta property="og:type" content="website" />
   <meta property="og:image:width" content="1200" />
@@ -33,7 +33,6 @@
     html,body{height:100%;margin:0;background:#fff;color:#111;-webkit-font-smoothing:antialiased}
     button{font-family:inherit}
 
-    /* COVER */
     .cover{
       position:fixed;inset:0;
       background: center/cover no-repeat url('cover.jpg');
@@ -42,7 +41,7 @@
       background-color:rgba(0,0,0,0.35);background-blend-mode:overlay;
       transition:opacity .6s ease;
       color:var(--white);
-      z-index: 100; /* Ensure cover is on top initially */
+      z-index: 100;
     }
     .cover h1{font-family:'Great Vibes',cursive;font-size:3.2rem;margin:0 0 6px;text-shadow:0 3px 12px rgba(0,0,0,.55)}
     .cover h2{font-size:1.1rem;margin:0 0 8px;text-transform:none;letter-spacing:1px;text-shadow:0 2px 8px rgba(0,0,0,.45)}
@@ -50,10 +49,34 @@
       margin-top:8px;margin-bottom:14px;font-size:1.02rem;font-style:italic;color:var(--white);
       text-shadow:0 2px 10px rgba(0,0,0,.7);
     }
+    
+    /* COUNTDOWN UTAMA (HARI, JAM, MENIT) */
     #countdown {
-      display:inline-block;padding:8px 18px;border-radius:999px;background:rgba(255,255,255,0.14);
-      backdrop-filter: blur(6px); color:var(--white);font-weight:600;margin-bottom:18px;box-shadow:0 6px 20px rgba(0,0,0,.25)
+      display:inline-block;
+      padding:8px 18px;
+      border-radius:999px;
+      background:rgba(255,255,255,0.14);
+      backdrop-filter: blur(6px); 
+      color:var(--white);
+      font-weight:600;
+      margin-bottom: 8px; 
+      box-shadow:0 6px 20px rgba(0,0,0,.25)
     }
+
+    /* LABEL BARU "MENUNUJU YANG ISTIMEWA" */
+    #countdownLabel {
+        display:inline-block;
+        padding: 6px 14px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.1); /* Efek blur terpisah */
+        backdrop-filter: blur(4px);
+        color: var(--white);
+        font-weight: 500;
+        margin-bottom: 20px; /* Jarak ke tombol */
+        font-size: 0.95rem;
+        box-shadow: 0 4px 12px rgba(0,0,0,.2);
+    }
+    
     .cover .btn {
       margin:8px 6px;padding:10px 24px;border-radius:999px;border:2px solid rgba(255,255,255,.98);
       background:transparent;color:var(--white);font-weight:700;cursor:pointer;min-width:160px;
@@ -61,10 +84,13 @@
     }
     .cover .btn:hover{background:var(--white);color:var(--accent)}
 
-    /* VIDEO PAGE */
     .video-page{
-      position:fixed;inset:0;display:none;align-items:center;justify-content:center;flex-direction:column;background:#000;padding:20px;
+      position:fixed;inset:0;display:none;align-items:center;justify-content:center;flex-direction:column;
+      background-color: rgba(0, 0, 0, 0.4); 
+      backdrop-filter: blur(10px);
+      padding:20px;
       z-index: 90;
+      transition: opacity 0.6s ease-in-out;
     }
     .video-frame{
       width:min(1100px,92%);max-height:82vh;border-radius:18px;overflow:hidden;
@@ -83,16 +109,15 @@
     }
     .video-controls button.secondary{background:transparent;color:var(--accent);border:2px solid var(--accent)}
 
-    /* THANK YOU / COMBINED PAGE (Scrollable) */
     .thanks-page{
       position:fixed;inset:0;
       display:none;
-      flex-direction:column; /* Allows content to flow top-down */
+      flex-direction:column;
       padding:28px;
       background: center/cover no-repeat url('prewed2.jpeg');
       background-blend-mode:overlay;background-color:rgba(255,255,255,0.75);backdrop-filter:blur(8px);
       text-align:center;color:var(--accent-dark);
-      overflow-y:auto; /* Allow scrolling for content */
+      overflow-y:auto;
       z-index: 80;
     }
     .thanks-inner{
@@ -101,13 +126,11 @@
       border-radius:14px;
       background:linear-gradient(180deg, rgba(255,255,255,0.85), rgba(245,255,250,0.75));
       box-shadow:0 12px 40px rgba(16,35,22,0.06);
-      /* Center horizontally and remove vertical constraint */
       margin: 0 auto; 
     }
     .thanks-inner h1{font-family:'Great Vibes',cursive;font-size:3rem;margin:6px 0 6px;color:var(--accent-dark)}
     .thanks-inner p{font-size:1.05rem;color:#2b3a37;margin:10px 0 18px}
     
-    /* KADO DIGITAL STYLES */
     .kado{
         font-size: 1.5rem; 
         font-weight: 600; 
@@ -144,11 +167,10 @@
     }
     .maps-btn{padding:10px 20px;border-radius:999px;border:2px solid var(--accent);background:transparent;color:var(--accent);font-weight:700;text-decoration:none}
     
-    /* WISHES SECTION STYLES (inside thanks-inner) */
     .wishes-section{
         margin-top:40px;
         padding-top: 10px; 
-        text-align: left; /* Align wishes content to the left */
+        text-align: left;
         width: 100%;
         max-width: 920px;
         margin-left: auto; 
@@ -158,7 +180,6 @@
     .wishes-header h2{font-family:'Great Vibes',cursive;font-size:2rem;margin:0;color:var(--accent-dark)}
     .wishes-desc{color:var(--muted);margin-bottom:8px}
 
-    /* Status Summary Boxes */
     .wishes-summary{
       display:flex;
       justify-content:center;
@@ -185,12 +206,10 @@
       line-height: 1; 
     }
 
-    /* Coloring based on Hadir/Tidak Hadir/Ragu */
-    #count-hadir { background-color: var(--accent); } /* Hijau */
-    #count-tidak-hadir { background-color: #d9534f; } /* Merah */
-    #count-ragu { background-color: #f0ad4e; } /* Kuning/Oranye */
+    #count-hadir { background-color: var(--accent); }
+    #count-tidak-hadir { background-color: #d9534f; }
+    #count-ragu { background-color: #f0ad4e; }
     
-    /* Form */
     .wishes-form{display:block;max-width:640px;margin:10px auto 18px;padding:14px;border-radius:12px;background:rgba(255,255,255,0.9);border:1px solid rgba(47,143,111,0.06)}
     .wishes-form label{display:block;font-weight:600;margin-bottom:6px;color:var(--accent-dark)}
     .wishes-form input,.wishes-form textarea,.wishes-form select{
@@ -201,13 +220,12 @@
       box-shadow:0 6px 18px rgba(47,143,111,0.12);
     }
 
-    /* List */
     .wishes-list{
         display:grid;
         grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
         gap:14px;
         margin-top:16px;
-        text-align: left; /* Keep text left-aligned in cards */
+        text-align: left;
     }
     .wish-card{background:var(--white);padding:12px;border-radius:12px;box-shadow:0 8px 20px rgba(16,35,22,0.04);border:1px solid rgba(39,97,77,0.04);opacity:0;transform:translateY(8px);transition:opacity .45s ease, transform .45s ease}
     .wish-card.visible{opacity:1;transform:none}
@@ -218,15 +236,13 @@
     .wishes-footer{text-align: center; margin-bottom: 20px;}
 
 
-    /* small screens */
     @media (max-width:720px){
       .cover h1{font-size:2.4rem}
       .thanks-inner{padding:18px}
-      .dana-container img{width:80px} /* Reduced for mobile */
+      .dana-container img{width:80px}
       .video-frame{max-height:70vh}
       .wishes-header h2{font-size:1.6rem}
       .wishes-list{grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}
-      /* Status box on mobile */
       .summary-box{min-width: 60px; font-size: 0.8rem; padding: 8px 10px; height: 55px;}
       .summary-box .count{font-size: 1.2rem;}
     }
@@ -241,6 +257,8 @@
     <div id="guestName" aria-live="polite"></div>
 
     <div id="countdown" role="status" aria-live="polite"></div>
+    
+    <div id="countdownLabel">Menuju yang istimewa</div>
 
     <div style="margin-top:18px;">
       <button class="btn" id="openBtn" aria-label="Buka undangan">Buka Undangan</button>
@@ -277,11 +295,9 @@
             <span style="font-size:1.1em;">🗐</span> Salin Nomor
         </button>
       </div>
+
       <a class="maps-btn" id="mapsBtn" href="https://maps.app.goo.gl/Rt4eNJmURrbSWSZv7" target="_blank" rel="noopener">Buka Maps</a>
       
-      <button class="maps-btn" id="wishesScrollBtn" type="button" style="margin-top: 12px; border-color: var(--accent); background: var(--accent); color: var(--white);">
-        💌 Kirim Ucapan & Doa
-      </button>
       <div class="wishes-section" id="wishesSection">
         <div class="wishes-header">
           <h2>Ucapan & Doa</h2>
@@ -326,19 +342,20 @@
 
         <div id="wishesList" class="wishes-list" aria-live="polite" aria-atomic="true"></div>
       </div>
+      
       <div class="wishes-footer" style="margin-top: 50px;">
           <h3 style="font-family:'Great Vibes',cursive; font-size: 2.2rem; margin: 0; color: var(--accent-dark);">
               Albi dan Aulia
           </h3>
       </div>
-      </div>
+
+    </div>
   </section>
 
   <audio id="bgMusic" src="musik.mp3" preload="auto" loop></audio>
 
   <script>
   (function(){
-    /* Config */
     const SHARE_LINK = "https://albi-aul.github.io/undangan-pernikahan/";
     const WHATSAPP_TEXT =
 `💌 Undangan Pernikahan Albi & Aul 💍
@@ -353,7 +370,6 @@ Kehadiran dan doa restu Anda merupakan hadiah terindah bagi kami.
     const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwJ8P0TShC-37Dz6pcc2xnaeAuq0KYe6jQkY6KMg9wf_w9_ithieXhW9HTSYuhehnVI7w/exec";
     const CSV_URL = "https://docs.google.com/spreadsheets/d/16u_mvksn8CaroG4ypJhqB5hUQWmRzGMU9c8w3zRZ1c0/gviz/tq?tqx=out:csv";
     
-    /* DOM */
     const cover = document.getElementById('cover');
     const openBtn = document.getElementById('openBtn');
     const shareBtn = document.getElementById('shareBtn');
@@ -366,22 +382,18 @@ Kehadiran dan doa restu Anda merupakan hadiah terindah bagi kami.
     const skipBtn = document.getElementById('skipBtn');
 
     const thanksPage = document.getElementById('thanksPage');
-    const wishesScrollBtn = document.getElementById('wishesScrollBtn'); // NEW SCROLL BUTTON
-    const wishesSection = document.getElementById('wishesSection'); // NEW TARGET SECTION
+    const wishesSection = document.getElementById('wishesSection'); // wishesScrollBtn dihapus
     const bgMusic = document.getElementById('bgMusic');
     const copyDanaBtn = document.getElementById('copyDanaBtn');
     
-    // Wishes Page Elements (now combined)
     const wishesForm = document.getElementById('wishesForm');
     const wishesList = document.getElementById('wishesList');
     const statusEl = document.getElementById('w_status');
     
-    // Summary Counters
     const valHadir = document.getElementById('val-hadir');
     const valTidakHadir = document.getElementById('val-tidak-hadir');
     const valRagu = document.getElementById('val-ragu');
 
-    /* Helper — get name from ?to= query param */
     const params = new URLSearchParams(window.location.search);
     const guestParam = params.get('to') || params.get('nama') || params.get('name') || "";
     if(guestParam){
@@ -391,8 +403,7 @@ Kehadiran dan doa restu Anda merupakan hadiah terindah bagi kami.
       guestNameEl.textContent = "";
     }
 
-    /* Minimal countdown (days hours minutes) */
-    const target = new Date("2025-11-15T07:00:00"); // UTC offset local assumed
+    const target = new Date("2025-11-15T07:00:00");
     function updateCountdown(){
       const now = new Date();
       let diff = Math.max(0, target - now);
@@ -401,12 +412,12 @@ Kehadiran dan doa restu Anda merupakan hadiah terindah bagi kami.
       const hours = Math.floor(diff / (1000*60*60));
       diff -= hours * (1000*60*60);
       const minutes = Math.floor(diff / (1000*60));
+      
       countdownEl.textContent = `${days} hari ${hours} jam ${minutes} menit lagi`;
     }
     updateCountdown();
     setInterval(updateCountdown, 60*1000);
 
-    /* Transition helpers */
     function showVideoPage(){
       cover.style.opacity = "0";
       setTimeout(() => {
@@ -416,22 +427,20 @@ Kehadiran dan doa restu Anda merupakan hadiah terindah bagi kami.
       }, 500);
     }
     
-    // MODIFIED: Added bgMusic.play() here
     function showThanksPage(){
       videoPage.style.opacity = "0";
+      
       setTimeout(() => {
         videoPage.style.display = "none";
         thanksPage.style.display = "flex";
         thanksPage.style.opacity = "1";
         
-        // FIX: Restart music after video stops/skips, overriding the pause listener
         bgMusic.play().catch(()=>{}); 
         
         loadWishes(); 
       }, 600);
     }
     
-    /* OPEN — start music & video together on user gesture */
     openBtn.addEventListener('click', async () => {
       try {
         await bgMusic.play();
@@ -446,14 +455,12 @@ Kehadiran dan doa restu Anda merupakan hadiah terindah bagi kami.
       }
     });
 
-    /* SHARE to WhatsApp (cover button) */
     shareBtn.addEventListener('click', () => {
       const text = WHATSAPP_TEXT;
       const url = "https://wa.me/?text=" + encodeURIComponent(text);
       window.open(url, "_blank");
     });
 
-    /* Play/Pause sync */
     playPauseBtn.addEventListener('click', async () => {
       if (video.paused) {
         try{ await video.play(); } catch(e){ console.warn('video play blocked', e); }
@@ -472,14 +479,12 @@ Kehadiran dan doa restu Anda merupakan hadiah terindah bagi kami.
       playPauseBtn.textContent = 'Pause';
       playPauseBtn.setAttribute('aria-pressed','true');
     });
-    // The problematic listener that stops music when video stops (keep for pause button sync)
     video.addEventListener('pause', () => {
       if (!bgMusic.paused) { bgMusic.pause(); } 
       playPauseBtn.textContent = 'Play';
       playPauseBtn.setAttribute('aria-pressed','false');
     });
 
-    /* Skip button / Video End */
     skipBtn.addEventListener('click', () => {
       try{ video.pause(); video.currentTime = video.duration || 0; } catch(e){ }
       showThanksPage();
@@ -488,14 +493,12 @@ Kehadiran dan doa restu Anda merupakan hadiah terindah bagi kami.
       showThanksPage();
     });
 
-    /* Copy DANA number */
     copyDanaBtn.addEventListener('click', async () => {
       try {
         await navigator.clipboard.writeText(DANA_NUMBER);
         copyDanaBtn.innerHTML = '<span style="font-size:1.1em;">✅</span> Nomor Disalin';
         setTimeout(()=>{ copyDanaBtn.innerHTML = '<span style="font-size:1.1em;">🗐</span> Salin Nomor'; }, 2200);
       } catch (err) {
-        // fallback
         const ta = document.createElement('textarea');
         ta.value = DANA_NUMBER;
         document.body.appendChild(ta);
@@ -511,15 +514,8 @@ Kehadiran dan doa restu Anda merupakan hadiah terindah bagi kami.
       }
     });
 
-    /* Scroll to Wishes Button Handler */
-    wishesScrollBtn.addEventListener('click', () => {
-        wishesSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    });
+    // wishesScrollBtn.addEventListener('click', ... telah dihapus
 
-
-    /* Wishes Logic */
-    
-    // Submit handler to Apps Script
     wishesForm.addEventListener('submit', async (e) => {
       e.preventDefault();
       const form = e.target;
@@ -531,7 +527,6 @@ Kehadiran dan doa restu Anda merupakan hadiah terindah bagi kami.
         if(json && json.status === 'success'){
           statusEl.textContent = '✅ Terima kasih! Ucapan dikirim.';
           form.reset();
-          // Reload wishes after successful submit
           setTimeout(loadWishes, 900); 
         } else {
           statusEl.textContent = '⚠️ Gagal mengirim. Silakan coba lagi.';
@@ -542,9 +537,7 @@ Kehadiran dan doa restu Anda merupakan hadiah terindah bagi kami.
       setTimeout(()=>{ statusEl.textContent = ''; }, 2400);
     });
 
-    // Fetch CSV and render cards + Count Status
     async function loadWishes(){
-      // Reset counts
       let countHadir = 0;
       let countTidakHadir = 0;
       let countRagu = 0;
@@ -553,16 +546,12 @@ Kehadiran dan doa restu Anda merupakan hadiah terindah bagi kami.
         const res = await fetch(CSV_URL);
         const txt = await res.text();
         const rows = csvToArray(txt);
-        // rows expected: header row then data rows
         const dataRows = rows.slice(1).filter(r=>r.length >= 3);
-        // clear list
         wishesList.innerHTML = '';
         
-        // Render and Count
-        dataRows.reverse().forEach((r, idx) => { // Tampilkan yang terbaru di atas (reverse)
+        dataRows.reverse().forEach((r, idx) => {
           const [nama, ucapan, kehadiran, waktu] = r;
           
-          // Count Status
           const status = kehadiran ? kehadiran.toLowerCase() : '';
           if (status.includes('hadir')) {
               countHadir++;
@@ -572,10 +561,8 @@ Kehadiran dan doa restu Anda merupakan hadiah terindah bagi kami.
               countRagu++;
           }
 
-          // Create Card
           const card = document.createElement('article');
           card.className = 'wish-card';
-          // Tambahkan ikon centang jika statusnya 'Hadir' 
           const statusIcon = status.includes('hadir') ? '<span style="color:var(--accent); margin-right:4px;">✔</span>' : '';
           
           card.innerHTML = `<div class="wish-name">${statusIcon}${escapeHtml(nama || 'Tamu')}</div>
@@ -583,11 +570,9 @@ Kehadiran dan doa restu Anda merupakan hadiah terindah bagi kami.
                             <div class="wish-text">${escapeHtml(ucapan || '')}</div>`;
           wishesList.appendChild(card);
           
-          // Animate in
           setTimeout(()=>{ card.classList.add('visible'); }, 80 + idx*80);
         });
         
-        // Update Summary Display
         if (valHadir) valHadir.textContent = countHadir;
         if (valTidakHadir) valTidakHadir.textContent = countTidakHadir;
         if (valRagu) valRagu.textContent = countRagu;
@@ -595,12 +580,11 @@ Kehadiran dan doa restu Anda merupakan hadiah terindah bagi kami.
       } catch (err){
         wishesList.innerHTML = '<div style="color:var(--muted)">Gagal memuat ucapan. Periksa koneksi atau akses publik spreadsheet.</div>';
         if (valHadir) valHadir.textContent = '0';
-        if (valTidakHadir) valTidakHadir.textContent = '0';
+        if (valTidakHadak) valTidakHadir.textContent = '0';
         if (valRagu) valRagu.textContent = '0';
       }
     }
 
-    // CSV parser (simple)
     function csvToArray(str){
       const rows = [];
       const lines = str.split(/\r?\n/).filter(Boolean);
