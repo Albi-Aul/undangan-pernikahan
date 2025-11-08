@@ -14,14 +14,34 @@
       position:fixed;top:0;left:0;width:100%;height:100%;
       background:url('cover.jpg') center/cover no-repeat;
       display:flex;flex-direction:column;align-items:center;justify-content:center;
-      text-align:center;color:#fff;background-blend-mode:overlay;background-color:rgba(0,0,0,0.5);
+      text-align:center;color:#fff;background-blend-mode:overlay;background-color:rgba(0,0,0,0.4);
       transition:opacity 1s ease;
+      padding:20px;
     }
-    #cover h1{font-family:'Great Vibes',cursive;font-size:3em;margin-bottom:5px}
-    #cover h2{font-size:1.3em;margin-bottom:10px}
-    #countdown{font-size:1em;margin-bottom:25px;letter-spacing:1px}
-    #guestName{font-size:1em;margin-bottom:25px;font-style:italic}
-    .btn{padding:10px 25px;border:2px solid #fff;border-radius:25px;background:transparent;color:#fff;font-weight:600;cursor:pointer;margin:5px;transition:all .4s}
+    #cover h1{font-family:'Great Vibes',cursive;font-size:3em;margin-bottom:5px;text-shadow:0 3px 10px rgba(0,0,0,0.5);}
+    #cover h2{font-size:1.3em;margin-bottom:15px;text-shadow:0 2px 6px rgba(0,0,0,0.5);}
+    #guestName{
+      font-size:1.1em;
+      margin-bottom:20px;
+      font-style:italic;
+      color:#fff;
+      opacity:0.95;
+      text-shadow:0 2px 8px rgba(0,0,0,0.7);
+    }
+    #countdown{
+      font-size:1em;
+      margin-bottom:25px;
+      letter-spacing:1px;
+      background:rgba(255,255,255,0.2);
+      backdrop-filter:blur(6px);
+      border-radius:20px;
+      padding:8px 20px;
+      color:#fff;
+      box-shadow:0 3px 10px rgba(0,0,0,0.3);
+    }
+    .btn{
+      padding:10px 25px;border:2px solid #fff;border-radius:25px;background:transparent;color:#fff;font-weight:600;cursor:pointer;margin:5px;transition:all .4s;text-shadow:0 1px 4px rgba(0,0,0,0.6);
+    }
     .btn:hover{background:#fff;color:#3b745e}
 
     /* VIDEO */
@@ -47,7 +67,8 @@
     .kado{font-family:'Poppins';font-weight:600;margin-bottom:10px;font-size:1.1em}
     .dana{display:flex;flex-direction:column;align-items:center;gap:8px;margin-bottom:25px}
     .dana img{width:150px;height:auto}
-    .dana span{font-weight:600;font-size:1.1em}
+    .copy-btn{padding:10px 25px;border:none;border-radius:25px;background:#3b745e;color:#fff;font-weight:600;cursor:pointer;transition:all .3s;font-size:1em}
+    .copy-btn:hover{background:#2f5c4a}
     .outline-btn{padding:12px 28px;border:2px solid #3b745e;border-radius:30px;background:transparent;color:#3b745e;font-weight:600;cursor:pointer;transition:all .4s;font-size:1em;text-decoration:none}
     .outline-btn:hover{background:#3b745e;color:#fff}
     .names{font-family:'Great Vibes',cursive;font-size:2em;margin-top:30px}
@@ -57,10 +78,10 @@
 
   <!-- COVER -->
   <section id="cover">
+    <div id="guestName"></div>
     <h1>Albi & Aul</h1>
     <h2>Undangan Resepsi Pernikahan</h2>
     <div id="countdown"></div>
-    <div id="guestName"></div>
     <button class="btn" id="openBtn">Buka Undangan</button>
     <button class="btn" id="shareBtn">Bagikan ke WhatsApp</button>
   </section>
@@ -81,7 +102,7 @@
     <div class="kado">Kado Digital 💙</div>
     <div class="dana">
       <img src="dana.png" alt="DANA Logo">
-      <span>088291195336</span>
+      <button class="copy-btn" id="copyDana">Salin Nomor DANA</button>
     </div>
     <a href="https://maps.app.goo.gl/Rt4eNJmURrbSWSZv7" target="_blank" class="outline-btn">Buka Maps</a>
     <div class="names">Albi & Aul</div>
@@ -99,6 +120,7 @@
     const video=document.getElementById('weddingVideo');
     const playPauseBtn=document.getElementById('playPauseBtn');
     const skipBtn=document.getElementById('skipBtn');
+    const copyDana=document.getElementById('copyDana');
 
     // Countdown
     const targetDate=new Date("November 15, 2025 07:00:00").getTime();
@@ -112,12 +134,14 @@
       countdownEl.textContent=`${days} hari ${hours} jam ${minutes} menit lagi`;
     },1000);
 
-    // Nama Tamu
+    // Nama tamu
     const params=new URLSearchParams(window.location.search);
     const guest=params.get("to");
-    if(guest){document.getElementById("guestName").textContent=`Kepada Yth: ${guest}`;}
+    if(guest){
+      document.getElementById("guestName").textContent=`Kepada yang terhormat ${guest}`;
+    }
 
-    // Buka Undangan
+    // Buka undangan
     openBtn.addEventListener('click',()=>{
       cover.style.opacity=0;
       setTimeout(()=>{
@@ -128,7 +152,7 @@
       },1000);
     });
 
-    // Play/Pause Sinkron
+    // Play/pause sinkron
     playPauseBtn.addEventListener('click',()=>{
       if(video.paused){
         video.play();bgMusic.play();playPauseBtn.textContent='Pause';
@@ -137,10 +161,9 @@
       }
     });
 
-    // Video Selesai
+    // Video selesai
     video.addEventListener('ended',()=>goToThanks());
     skipBtn.addEventListener('click',()=>goToThanks());
-
     function goToThanks(){
       videoPage.style.opacity=0;
       setTimeout(()=>{
@@ -149,6 +172,13 @@
         thanksPage.style.opacity=1;
       },1000);
     }
+
+    // Salin nomor DANA
+    copyDana.addEventListener('click',()=>{
+      navigator.clipboard.writeText('088291195336');
+      copyDana.textContent='Nomor Disalin ✅';
+      setTimeout(()=>copyDana.textContent='Salin Nomor DANA',2000);
+    });
 
     // Bagikan ke WhatsApp
     shareBtn.addEventListener('click',()=>{
