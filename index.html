@@ -1,264 +1,151 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Undangan Resepsi - Albi & Aul</title>
-  <meta name="description" content="Undangan resepsi pernikahan Albi & Aul - 15 November 2025" />
-  <!-- Open Graph for thumbnail (replace with your hosted URL after deploy) -->
-  <meta property="og:title" content="Undangan Resepsi Albi & Aul" />
-  <meta property="og:description" content="15 November 2025 — Resepsi Pernikahan" />
-  <meta property="og:image" content="https://albi-aul.github.io/undangan-pernikahan/cover.jpg" />
-  <meta property="og:type" content="website" />
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Undangan Pernikahan Albi & Aul</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
-    :root{
-      --accent:#2f8f6f;
-      --white:#ffffff;
-      --muted:#6b6b6b;
-      --bg-green:#f6fff9;
-      font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Arial;
-    }
-    html,body{height:100%;margin:0;background:#fff;color:#222}
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body,html { height:100%; font-family:'Poppins',sans-serif; background:#fff; overflow:hidden; }
+
     /* COVER */
-    .wrap{position:relative;width:100%;height:100vh;overflow:hidden;display:flex;align-items:center;justify-content:center}
-    .bg-img{position:absolute;inset:0;background-size:cover;background-position:center;filter:blur(6px) brightness(0.6);transform:scale(1.03)}
-    .cover-card{position:relative;z-index:3;max-width:920px;width:94%;padding:28px;border-radius:16px;text-align:center;background:transparent;color:var(--white)}
-    .title{color:var(--white);font-size:clamp(18px,4.4vw,34px);font-weight:700;margin-bottom:8px}
-    .subtitle{color:rgba(255,255,255,0.9);margin-bottom:14px}
-    .countdown{display:flex;gap:12px;justify-content:center;margin-bottom:18px}
-    .countdown div{background:rgba(255,255,255,0.06);padding:10px 12px;border-radius:8px;color:var(--white);min-width:56px}
-    .btn-group{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
-    button.cta{background:var(--white);color:var(--accent); padding:10px 16px;border-radius:12px;border:none;font-weight:700;cursor:pointer}
-    button.ghost{background:transparent;border:1px solid rgba(255,255,255,0.18);color:var(--white);padding:10px 14px;border-radius:12px;cursor:pointer}
-    .to-guest{color:rgba(255,255,255,0.95);margin-bottom:12px}
+    #cover {
+      position:fixed; top:0; left:0; width:100%; height:100%;
+      background:url('cover.jpg') center/cover no-repeat;
+      display:flex; flex-direction:column; align-items:center; justify-content:center;
+      text-align:center; color:#fff;
+      background-blend-mode:overlay; background-color:rgba(0,0,0,0.4);
+      transition:opacity 1s ease;
+    }
+    #cover h1 { font-family:'Great Vibes',cursive; font-size:3em; margin-bottom:10px; }
+    #cover h2 { font-size:1.3em; letter-spacing:2px; margin-bottom:30px; }
+    .btn {
+      padding:12px 28px; border:2px solid #fff; border-radius:30px;
+      background:transparent; color:#fff; font-weight:600; cursor:pointer;
+      transition:all 0.4s ease; font-size:1em;
+    }
+    .btn:hover { background:#fff; color:#3b745e; }
 
-    /* VIDEO CONTAINER */
-    .video-full{position:fixed;inset:0;background:#000;display:flex;align-items:center;justify-content:center;z-index:8;opacity:0;pointer-events:none;transition:opacity .6s}
-    .video-full.show{opacity:1;pointer-events:auto}
-    video#mainVideo{width:100%;height:100%;object-fit:cover}
+    /* VIDEO */
+    #videoPage {
+      display:none; position:fixed; top:0; left:0; width:100%; height:100%;
+      background:#fff; align-items:center; justify-content:center; flex-direction:column;
+      transition:opacity 1s ease;
+    }
+    video {
+      max-width:90%; max-height:70%; border-radius:16px; box-shadow:0 8px 24px rgba(0,0,0,0.3);
+    }
+    .controls {
+      margin-top:20px; display:flex; gap:15px;
+    }
+    .controls button {
+      padding:10px 22px; border:none; border-radius:25px;
+      background:#3b745e; color:#fff; font-weight:600; cursor:pointer;
+      transition:0.3s; font-size:1em;
+    }
+    .controls button:hover { background:#2f5c4a; }
 
-    /* THANK YOU PAGE */
-    .thanks{display:none;min-height:100vh;padding:36px;box-sizing:border-box;background:linear-gradient(180deg,#ffffff,#f6fff9);color:#0b3;align-items:center;justify-content:center}
-    .thanks.show{display:flex}
-    .thanks-inner{max-width:900px;margin:0 auto;text-align:center;padding:24px;border-radius:14px}
-    .thanks h1{font-size:28px;margin-bottom:8px;color:#0a3}
-    .thanks p{color:#333;font-size:16px;margin-bottom:20px}
-    .orn{position:absolute;left:16px;top:16px;opacity:0.12}
-    .heart{position:relative;width:60px;height:60px;margin:0 auto 12px;font-size:36px;line-height:60px;opacity:0.12}
-    .controls-small{display:flex;gap:10px;justify-content:center;align-items:center;margin-top:12px;flex-wrap:wrap}
-    .small-btn{padding:10px 14px;border-radius:10px;border:1px solid rgba(0,0,0,0.06);background:#fff;cursor:pointer;font-weight:600}
+    /* TERIMA KASIH */
+    #thanksPage {
+      display:none; position:fixed; top:0; left:0; width:100%; height:100%;
+      background:url('prewed2.jpeg') center/cover no-repeat;
+      background-blend-mode:overlay; background-color:rgba(255,255,255,0.75);
+      backdrop-filter:blur(8px);
+      flex-direction:column; align-items:center; justify-content:center;
+      text-align:center; padding:20px; transition:opacity 1s ease;
+      color:#2f5c4a;
+    }
+    #thanksPage h1 { font-family:'Great Vibes',cursive; font-size:3em; margin-bottom:10px; }
+    #thanksPage p { font-size:1.1em; margin-bottom:25px; max-width:600px; }
 
-    /* Kado Digital */
-    .gift{background:linear-gradient(180deg,#ffffff,#f0fff6);border-radius:12px;padding:14px;margin:12px auto;width:min(92%,520px);display:flex;gap:14px;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(47,143,111,0.06)}
-    .gift img{width:64px;height:auto}
-    .gift .info{display:flex;flex-direction:column;align-items:flex-start}
-    .gift .info b{font-size:16px;color:#0a3}
-    .copy-btn{background:var(--accent);color:#fff;padding:8px 10px;border-radius:8px;border:none;cursor:pointer;font-weight:700}
+    .dana {
+      display:flex; flex-direction:column; align-items:center; gap:8px;
+      margin-bottom:25px;
+    }
+    .dana img { width:150px; height:auto; }
+    .dana span { font-weight:600; font-size:1.1em; }
 
-    /* responsive */
-    @media (max-width:640px){.title{font-size:20px}.countdown div{min-width:44px;padding:8px 10px}.gift{flex-direction:column;gap:8px}}
+    .outline-btn {
+      padding:12px 28px; border:2px solid #3b745e; border-radius:30px;
+      background:transparent; color:#3b745e; font-weight:600; cursor:pointer;
+      transition:all 0.4s ease; font-size:1em; text-decoration:none;
+    }
+    .outline-btn:hover { background:#3b745e; color:#fff; }
   </style>
 </head>
 <body>
-
   <!-- COVER -->
-  <div id="cover" class="wrap" aria-label="Cover Undangan">
-    <div class="bg-img" id="bgImg"></div>
-    <div class="cover-card" role="region" aria-label="Undangan Cover">
-      <div class="to-guest" id="toGuest">Kepada Yth. Tamu</div>
-      <div class="title">Undangan Resepsi Pernikahan Albi &amp; Aul</div>
-      <div class="subtitle">15 November 2025 — Pukul 07:00</div>
+  <section id="cover">
+    <h1>Albi & Aul</h1>
+    <h2>Undangan Resepsi Pernikahan</h2>
+    <button class="btn" id="openBtn">Buka Undangan</button>
+  </section>
 
-      <div class="countdown" id="countdown" aria-hidden="false">
-        <div><span id="days">00</span><div style="font-size:11px">Hari</div></div>
-        <div><span id="hours">00</span><div style="font-size:11px">Jam</div></div>
-        <div><span id="minutes">00</span><div style="font-size:11px">Menit</div></div>
-        <div><span id="seconds">00</span><div style="font-size:11px">Detik</div></div>
-      </div>
-
-      <div class="btn-group">
-        <button class="cta" id="openBtn">Buka Undangan</button>
-        <button class="ghost" id="shareCover">Bagikan ke WhatsApp</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- VIDEO (hidden until opened) -->
-  <div id="videoWrap" class="video-full" aria-hidden="true">
-    <video id="mainVideo" playsinline webkit-playsinline></video>
-  </div>
-
-  <!-- THANK YOU / INTERACTIVE PAGE -->
-  <section id="thanksPage" class="thanks" aria-hidden="true">
-    <div class="thanks-inner">
-      <div class="heart" id="heartAnim">❤</div>
-      <h1>Terima kasih atas doa dan kehadiran Anda di hari bahagia kami.</h1>
-      <p>Salam hangat,<br><strong>Albi &amp; Aul</strong></p>
-
-      <div class="gift" role="region" aria-label="Kado Digital">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Logo_dana_blue.svg" alt="Logo DANA" />
-        <div class="info">
-          <div style="font-size:13px;color:#666;margin-bottom:6px">Kado Digital (DANA)</div>
-          <b id="danaNumber">088291195336</b>
-          <div style="font-size:13px;color:#666">Tap untuk menyalin nomor ke clipboard</div>
-        </div>
-        <button class="copy-btn" id="copyDana">Salin Nomor DANA</button>
-      </div>
-
-      <div class="controls-small" role="region" aria-label="Kontrol">
-        <button class="small-btn" id="playPauseMusic">Pause Musik</button>
-        <button class="small-btn" id="wishBtn">Kirim Ucapan (WhatsApp)</button>
-        <button class="small-btn" id="mapBtn">Lihat Lokasi</button>
-        <button class="small-btn" id="shareFinal">Bagikan</button>
-      </div>
+  <!-- VIDEO -->
+  <section id="videoPage">
+    <video id="weddingVideo" src="video.mp4"></video>
+    <div class="controls">
+      <button id="playPauseBtn">Play</button>
+      <button id="skipBtn">Lewati</button>
     </div>
   </section>
 
-  <!-- Audio (musical background) -->
-  <audio id="bgMusic" preload="auto"></audio>
+  <!-- TERIMA KASIH -->
+  <section id="thanksPage">
+    <h1>Terima Kasih</h1>
+    <p>Dengan penuh rasa syukur, kami mengucapkan terima kasih atas doa dan kehadiran yang berarti bagi kami.</p>
+    <div class="dana">
+      <img src="68f47815-a029-43e4-950d-1bfb37604fce.png" alt="DANA Logo">
+      <span>088291195336</span>
+    </div>
+    <a href="https://maps.app.goo.gl/Rt4eNJmURrbSWSZv7" target="_blank" class="outline-btn">Buka Maps</a>
+  </section>
+
+  <audio id="bgMusic" src="musik.mp3" preload="auto"></audio>
 
   <script>
-    // CONFIG - sesuaikan jika perlu
-    const CONFIG = {
-      coverImage: 'cover.jpg',
-      videoFile: 'video.mp4',
-      musicFile: 'musik.mp3',
-      mapsUrl: 'https://maps.app.goo.gl/Rt4eNJmURrbSWSZv7',
-      giftInfo: 'DANA 088291195336',
-      shareLink: 'https://albi-aul.github.io/undangan-pernikahan/'
-    };
-
-    // Helper: ambil parameter nama dari URL (?to=Nama)
-    function getParam(name){ try{ const url=new URL(location.href); return url.searchParams.get(name) || '' }catch(e){ return '' } }
-    const guestName = getParam('to');
-    const toGuestEl = document.getElementById('toGuest');
-    if(guestName) toGuestEl.textContent = 'Kepada Yth. ' + decodeURIComponent(guestName);
-
-    // Set background cover image
-    document.getElementById('bgImg').style.backgroundImage = `url('${CONFIG.coverImage}')`;
-
-    // Countdown
-    const target = new Date('2025-11-15T07:00:00');
-    const daysEl = document.getElementById('days');
-    const hoursEl = document.getElementById('hours');
-    const minutesEl = document.getElementById('minutes');
-    const secondsEl = document.getElementById('seconds');
-
-    function updateCountdown(){
-      const now = new Date();
-      let diff = Math.max(0, target - now);
-      const d = Math.floor(diff / (1000*60*60*24));
-      diff -= d*24*60*60*1000;
-      const h = Math.floor(diff/(1000*60*60));
-      diff -= h*60*60*1000;
-      const m = Math.floor(diff/(1000*60));
-      diff -= m*60*1000;
-      const s = Math.floor(diff/1000);
-      daysEl.textContent = String(d).padStart(2,'0');
-      hoursEl.textContent = String(h).padStart(2,'0');
-      minutesEl.textContent = String(m).padStart(2,'0');
-      secondsEl.textContent = String(s).padStart(2,'0');
-    }
-    updateCountdown(); setInterval(updateCountdown,1000);
-
-    // Elements
-    const openBtn = document.getElementById('openBtn');
-    const videoWrap = document.getElementById('videoWrap');
-    const mainVideo = document.getElementById('mainVideo');
     const cover = document.getElementById('cover');
-    const bgMusic = document.getElementById('bgMusic');
+    const openBtn = document.getElementById('openBtn');
+    const videoPage = document.getElementById('videoPage');
     const thanksPage = document.getElementById('thanksPage');
-    const playPauseMusic = document.getElementById('playPauseMusic');
+    const bgMusic = document.getElementById('bgMusic');
+    const video = document.getElementById('weddingVideo');
+    const playPauseBtn = document.getElementById('playPauseBtn');
+    const skipBtn = document.getElementById('skipBtn');
 
-    // Load files into elements
-    mainVideo.src = CONFIG.videoFile;
-    bgMusic.src = CONFIG.musicFile;
-    bgMusic.loop = false; // music will not loop
-
-    // TRANSITIONS: cover -> video (fade) and video -> thanks (fade)
-    function showVideo(){
-      cover.style.transition = 'opacity .6s ease'; cover.style.opacity = 0;
-      setTimeout(()=>{ cover.style.display='none';
-        videoWrap.classList.add('show');
-        videoWrap.style.display = 'flex';
-        try{ mainVideo.play(); }catch(e){ console.log('video play blocked', e); }
-      },650);
-    }
-
-    function showThanks(){
-      videoWrap.classList.remove('show');
-      videoWrap.style.display = 'none';
-      thanksPage.classList.add('show');
-      thanksPage.setAttribute('aria-hidden','false');
-      bgMusic.play().catch(()=>{});
-    }
-
-    // Open: start music and show video with transition
-    openBtn.addEventListener('click', async ()=>{
-      try{ await bgMusic.play(); }catch(e){ /* autoplay blocked, we'll continue */ }
-      showVideo();
+    openBtn.addEventListener('click', () => {
+      cover.style.opacity = 0;
+      setTimeout(() => {
+        cover.style.display = 'none';
+        videoPage.style.display = 'flex';
+        bgMusic.play();
+      }, 1000);
     });
 
-    // Video end -> show thank you page
-    mainVideo.addEventListener('ended', ()=>{
-      // small fade-out then show thanks
-      videoWrap.style.transition = 'opacity .6s ease';
-      videoWrap.style.opacity = 0;
-      setTimeout(()=>{ showThanks(); },600);
-    });
-
-    // Small music control
-    playPauseMusic.addEventListener('click', ()=>{
-      if(bgMusic.paused) { bgMusic.play(); playPauseMusic.textContent='Pause Musik'; }
-      else { bgMusic.pause(); playPauseMusic.textContent='Play Musik'; }
-    });
-
-    // Heart animation
-    const heartAnim = document.getElementById('heartAnim');
-    if(heartAnim){
-      heartAnim.style.transition='transform 4s ease-in-out, opacity 4s';
-      heartAnim.style.opacity=0.12; heartAnim.style.transform='translateY(0)';
-      setInterval(()=>{ heartAnim.style.opacity=0.2; heartAnim.style.transform='translateY(-8px)'; setTimeout(()=>{ heartAnim.style.opacity=0.12; heartAnim.style.transform='translateY(0)'; },2000); },3000);
-    }
-
-    // Buttons on thanks page
-    document.getElementById('copyDana').addEventListener('click', async ()=>{
-      const text = '088291195336';
-      try{
-        await navigator.clipboard.writeText(text);
-        alert('Nomor DANA disalin: ' + text);
-      }catch(e){
-        // fallback
-        const ta = document.createElement('textarea'); ta.value = text; document.body.appendChild(ta); ta.select();
-        try{ document.execCommand('copy'); alert('Nomor DANA disalin: ' + text); }catch(err){ alert('Silakan salin secara manual: ' + text); }
-        ta.remove();
+    playPauseBtn.addEventListener('click', () => {
+      if (video.paused) {
+        video.play();
+        bgMusic.play();
+        playPauseBtn.textContent = 'Pause';
+      } else {
+        video.pause();
+        bgMusic.pause();
+        playPauseBtn.textContent = 'Play';
       }
     });
 
-    document.getElementById('wishBtn').addEventListener('click', ()=>{
-      const wa = 'https://wa.me/?text=' + encodeURIComponent('Assalamualaikum, saya mengirim ucapan selamat untuk Albi & Aul.');
-      window.open(wa,'_blank');
-    });
+    video.addEventListener('ended', () => goToThanks());
+    skipBtn.addEventListener('click', () => goToThanks());
 
-    document.getElementById('mapBtn').addEventListener('click', ()=>{ window.open(CONFIG.mapsUrl,'_blank'); });
-
-    // Share buttons: share link to WhatsApp
-    function shareToWhatsApp(text){ const wa = 'https://wa.me/?text=' + encodeURIComponent(text); window.open(wa,'_blank'); }
-    document.getElementById('shareCover').addEventListener('click', ()=>{
-      const text = 'Hai! Kami mengundangmu untuk hadir di resepsi pernikahan kami \n\n' + CONFIG.shareLink;
-      shareToWhatsApp(text);
-    });
-    document.getElementById('shareFinal').addEventListener('click', ()=>{
-      const text = 'Terima kasih dari Albi & Aul — Lihat undangan: ' + CONFIG.shareLink;
-      shareToWhatsApp(text);
-    });
-
-    // Accessibility: space to toggle play/pause on video when visible
-    document.addEventListener('keydown',(e)=>{ if(e.key === ' '){ if(document.body.contains(mainVideo) && videoWrap.classList.contains('show')){ e.preventDefault(); if(mainVideo.paused) mainVideo.play(); else mainVideo.pause(); } } });
-
-    // NOTE: For WhatsApp to show a thumbnail when sharing the site URL, host this HTML and the cover.jpg on the public URL and ensure the og:image meta points to the full public URL.
-
+    function goToThanks() {
+      videoPage.style.opacity = 0;
+      setTimeout(() => {
+        videoPage.style.display = 'none';
+        thanksPage.style.display = 'flex';
+        thanksPage.style.opacity = 1;
+      }, 1000);
+    }
   </script>
 </body>
 </html>
