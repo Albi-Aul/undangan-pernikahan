@@ -6,87 +6,70 @@
   <title>Undangan Pernikahan Albi & Aul</title>
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
-    * { margin:0; padding:0; box-sizing:border-box; }
-    body,html { height:100%; font-family:'Poppins',sans-serif; background:#fff; overflow:hidden; }
+    *{margin:0;padding:0;box-sizing:border-box}
+    body,html{height:100%;font-family:'Poppins',sans-serif;background:#fff;overflow:hidden}
 
     /* COVER */
-    #cover {
-      position:fixed; top:0; left:0; width:100%; height:100%;
+    #cover{
+      position:fixed;top:0;left:0;width:100%;height:100%;
       background:url('cover.jpg') center/cover no-repeat;
-      display:flex; flex-direction:column; align-items:center; justify-content:center;
-      text-align:center; color:#fff;
-      background-blend-mode:overlay; background-color:rgba(0,0,0,0.4);
+      display:flex;flex-direction:column;align-items:center;justify-content:center;
+      text-align:center;color:#fff;background-blend-mode:overlay;background-color:rgba(0,0,0,0.5);
       transition:opacity 1s ease;
     }
-    #cover h1 { font-family:'Great Vibes',cursive; font-size:3em; margin-bottom:10px; }
-    #cover h2 { font-size:1.3em; letter-spacing:2px; margin-bottom:30px; }
-    .btn {
-      padding:12px 28px; border:2px solid #fff; border-radius:30px;
-      background:transparent; color:#fff; font-weight:600; cursor:pointer;
-      transition:all 0.4s ease; font-size:1em;
-    }
-    .btn:hover { background:#fff; color:#3b745e; }
+    #cover h1{font-family:'Great Vibes',cursive;font-size:3em;margin-bottom:5px}
+    #cover h2{font-size:1.3em;margin-bottom:10px}
+    #countdown{font-size:1em;margin-bottom:25px;letter-spacing:1px}
+    #guestName{font-size:1em;margin-bottom:25px;font-style:italic}
+    .btn{padding:10px 25px;border:2px solid #fff;border-radius:25px;background:transparent;color:#fff;font-weight:600;cursor:pointer;margin:5px;transition:all .4s}
+    .btn:hover{background:#fff;color:#3b745e}
 
     /* VIDEO */
-    #videoPage {
-      display:none; position:fixed; top:0; left:0; width:100%; height:100%;
-      background:#fff; align-items:center; justify-content:center; flex-direction:column;
-      transition:opacity 1s ease;
+    #videoPage{
+      display:none;position:fixed;top:0;left:0;width:100%;height:100%;
+      background:#fff;align-items:center;justify-content:center;flex-direction:column;transition:opacity 1s ease;
     }
-    video {
-      max-width:90%; max-height:70%; border-radius:16px; box-shadow:0 8px 24px rgba(0,0,0,0.3);
-    }
-    .controls {
-      margin-top:20px; display:flex; gap:15px;
-    }
-    .controls button {
-      padding:10px 22px; border:none; border-radius:25px;
-      background:#3b745e; color:#fff; font-weight:600; cursor:pointer;
-      transition:0.3s; font-size:1em;
-    }
-    .controls button:hover { background:#2f5c4a; }
+    video{max-width:90%;max-height:70%;border-radius:16px;box-shadow:0 8px 24px rgba(0,0,0,0.3)}
+    .controls{margin-top:20px;display:flex;gap:15px}
+    .controls button{padding:10px 22px;border:none;border-radius:25px;background:#3b745e;color:#fff;font-weight:600;cursor:pointer;font-size:1em}
+    .controls button:hover{background:#2f5c4a}
 
     /* TERIMA KASIH */
-    #thanksPage {
-      display:none; position:fixed; top:0; left:0; width:100%; height:100%;
+    #thanksPage{
+      display:none;position:fixed;top:0;left:0;width:100%;height:100%;
       background:url('prewed2.jpeg') center/cover no-repeat;
-      background-blend-mode:overlay; background-color:rgba(255,255,255,0.75);
-      backdrop-filter:blur(8px);
-      flex-direction:column; align-items:center; justify-content:center;
-      text-align:center; padding:20px; transition:opacity 1s ease;
+      background-color:rgba(255,255,255,0.75);background-blend-mode:overlay;backdrop-filter:blur(8px);
+      flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:20px;transition:opacity 1s ease;
       color:#2f5c4a;
     }
-    #thanksPage h1 { font-family:'Great Vibes',cursive; font-size:3em; margin-bottom:10px; }
-    #thanksPage p { font-size:1.1em; margin-bottom:25px; max-width:600px; }
-
-    .dana {
-      display:flex; flex-direction:column; align-items:center; gap:8px;
-      margin-bottom:25px;
-    }
-    .dana img { width:150px; height:auto; }
-    .dana span { font-weight:600; font-size:1.1em; }
-
-    .outline-btn {
-      padding:12px 28px; border:2px solid #3b745e; border-radius:30px;
-      background:transparent; color:#3b745e; font-weight:600; cursor:pointer;
-      transition:all 0.4s ease; font-size:1em; text-decoration:none;
-    }
-    .outline-btn:hover { background:#3b745e; color:#fff; }
+    #thanksPage h1{font-family:'Great Vibes',cursive;font-size:3em;margin-bottom:10px}
+    #thanksPage p{font-size:1.1em;margin-bottom:25px;max-width:600px}
+    .kado{font-family:'Poppins';font-weight:600;margin-bottom:10px;font-size:1.1em}
+    .dana{display:flex;flex-direction:column;align-items:center;gap:8px;margin-bottom:25px}
+    .dana img{width:150px;height:auto}
+    .dana span{font-weight:600;font-size:1.1em}
+    .outline-btn{padding:12px 28px;border:2px solid #3b745e;border-radius:30px;background:transparent;color:#3b745e;font-weight:600;cursor:pointer;transition:all .4s;font-size:1em;text-decoration:none}
+    .outline-btn:hover{background:#3b745e;color:#fff}
+    .names{font-family:'Great Vibes',cursive;font-size:2em;margin-top:30px}
   </style>
 </head>
 <body>
+
   <!-- COVER -->
   <section id="cover">
     <h1>Albi & Aul</h1>
     <h2>Undangan Resepsi Pernikahan</h2>
+    <div id="countdown"></div>
+    <div id="guestName"></div>
     <button class="btn" id="openBtn">Buka Undangan</button>
+    <button class="btn" id="shareBtn">Bagikan ke WhatsApp</button>
   </section>
 
   <!-- VIDEO -->
   <section id="videoPage">
     <video id="weddingVideo" src="video.mp4"></video>
     <div class="controls">
-      <button id="playPauseBtn">Play</button>
+      <button id="playPauseBtn">Pause</button>
       <button id="skipBtn">Lewati</button>
     </div>
   </section>
@@ -95,57 +78,84 @@
   <section id="thanksPage">
     <h1>Terima Kasih</h1>
     <p>Dengan penuh rasa syukur, kami mengucapkan terima kasih atas doa dan kehadiran yang berarti bagi kami.</p>
+    <div class="kado">Kado Digital 💙</div>
     <div class="dana">
-      <img src="68f47815-a029-43e4-950d-1bfb37604fce.png" alt="DANA Logo">
+      <img src="dana.png" alt="DANA Logo">
       <span>088291195336</span>
     </div>
     <a href="https://maps.app.goo.gl/Rt4eNJmURrbSWSZv7" target="_blank" class="outline-btn">Buka Maps</a>
+    <div class="names">Albi & Aul</div>
   </section>
 
   <audio id="bgMusic" src="musik.mp3" preload="auto"></audio>
 
   <script>
-    const cover = document.getElementById('cover');
-    const openBtn = document.getElementById('openBtn');
-    const videoPage = document.getElementById('videoPage');
-    const thanksPage = document.getElementById('thanksPage');
-    const bgMusic = document.getElementById('bgMusic');
-    const video = document.getElementById('weddingVideo');
-    const playPauseBtn = document.getElementById('playPauseBtn');
-    const skipBtn = document.getElementById('skipBtn');
+    const cover=document.getElementById('cover');
+    const openBtn=document.getElementById('openBtn');
+    const shareBtn=document.getElementById('shareBtn');
+    const videoPage=document.getElementById('videoPage');
+    const thanksPage=document.getElementById('thanksPage');
+    const bgMusic=document.getElementById('bgMusic');
+    const video=document.getElementById('weddingVideo');
+    const playPauseBtn=document.getElementById('playPauseBtn');
+    const skipBtn=document.getElementById('skipBtn');
 
-    openBtn.addEventListener('click', () => {
-      cover.style.opacity = 0;
-      setTimeout(() => {
-        cover.style.display = 'none';
-        videoPage.style.display = 'flex';
+    // Countdown
+    const targetDate=new Date("November 15, 2025 07:00:00").getTime();
+    const countdownEl=document.getElementById("countdown");
+    setInterval(()=>{
+      const now=new Date().getTime();
+      const distance=targetDate-now;
+      const days=Math.floor(distance/(1000*60*60*24));
+      const hours=Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+      const minutes=Math.floor((distance%(1000*60*60))/(1000*60));
+      countdownEl.textContent=`${days} hari ${hours} jam ${minutes} menit lagi`;
+    },1000);
+
+    // Nama Tamu
+    const params=new URLSearchParams(window.location.search);
+    const guest=params.get("to");
+    if(guest){document.getElementById("guestName").textContent=`Kepada Yth: ${guest}`;}
+
+    // Buka Undangan
+    openBtn.addEventListener('click',()=>{
+      cover.style.opacity=0;
+      setTimeout(()=>{
+        cover.style.display='none';
+        videoPage.style.display='flex';
         bgMusic.play();
-      }, 1000);
+        video.play();
+      },1000);
     });
 
-    playPauseBtn.addEventListener('click', () => {
-      if (video.paused) {
-        video.play();
-        bgMusic.play();
-        playPauseBtn.textContent = 'Pause';
-      } else {
-        video.pause();
-        bgMusic.pause();
-        playPauseBtn.textContent = 'Play';
+    // Play/Pause Sinkron
+    playPauseBtn.addEventListener('click',()=>{
+      if(video.paused){
+        video.play();bgMusic.play();playPauseBtn.textContent='Pause';
+      }else{
+        video.pause();bgMusic.pause();playPauseBtn.textContent='Play';
       }
     });
 
-    video.addEventListener('ended', () => goToThanks());
-    skipBtn.addEventListener('click', () => goToThanks());
+    // Video Selesai
+    video.addEventListener('ended',()=>goToThanks());
+    skipBtn.addEventListener('click',()=>goToThanks());
 
-    function goToThanks() {
-      videoPage.style.opacity = 0;
-      setTimeout(() => {
-        videoPage.style.display = 'none';
-        thanksPage.style.display = 'flex';
-        thanksPage.style.opacity = 1;
-      }, 1000);
+    function goToThanks(){
+      videoPage.style.opacity=0;
+      setTimeout(()=>{
+        videoPage.style.display='none';
+        thanksPage.style.display='flex';
+        thanksPage.style.opacity=1;
+      },1000);
     }
+
+    // Bagikan ke WhatsApp
+    shareBtn.addEventListener('click',()=>{
+      const shareText=`Undangan Pernikahan Albi & Aul 💍\nSilakan buka undangan kami di:\n${window.location.href}`;
+      const url=`https://wa.me/?text=${encodeURIComponent(shareText)}`;
+      window.open(url,'_blank');
+    });
   </script>
 </body>
 </html>
