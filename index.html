@@ -151,7 +151,6 @@
 
       <a class="maps-btn" id="mapsBtn" href="https://maps.app.goo.gl/Rt4eNJmURrbSWSZv7" target="_blank" rel="noopener">Buka Maps</a>
 
-      <div class="names" aria-hidden="false">Albi &amp; Aul</div>
     </div>
   </section>
 
@@ -427,7 +426,9 @@ Kehadiran dan doa restu Anda merupakan hadiah terindah bagi kami.
       </form>
 
       <div id="wishesList" class="wishes-list" aria-live="polite" aria-atomic="true"></div>
-
+<div class="names" style="text-align:center;margin:20px 0;font-family:'Great Vibes',cursive;font-size:1.8rem;color:var(--accent-dark);">
+  Albi &amp; Aul
+</div>
       <div class="wishes-footer">
         <button id="backToThanksBtn" class="back-btn" aria-label="Kembali ke Terima Kasih">Kembali ke Terima Kasih</button>
       </div>
@@ -447,22 +448,6 @@ Kehadiran dan doa restu Anda merupakan hadiah terindah bagi kami.
     const wishesList = document.getElementById('wishesList');
     const backBtn = document.getElementById('backToThanksBtn');
     const statusEl = document.getElementById('w_status');
-
-    // Insert "Lanjut ke Ucapan & Doa" button after mapsBtn
-    function insertContinueButton(){
-      if(!mapsBtn) return;
-      const btn = document.createElement('button');
-      btn.type = 'button';
-      btn.innerHTML = '💌 Lanjut ke Ucapan &amp; Doa';
-      btn.className = 'maps-btn';
-      btn.style.marginTop = '12px';
-      btn.addEventListener('click', () => {
-        fadeBetween(thanksPage, wishesPage);
-        // load wishes when opening
-        loadWishes();
-      });
-      mapsBtn.insertAdjacentElement('afterend', btn);
-    }
 
     // Fade helper
     function fadeBetween(fromEl, toEl){
@@ -573,7 +558,7 @@ Kehadiran dan doa restu Anda merupakan hadiah terindah bagi kami.
     (function init(){
       wishesPage.style.display = 'none';
       wishesPage.style.opacity = '0';
-      insertContinueButton();
+      /setTimeout(()=>{    fadeBetween(thanksPage, wishesPage);    loadWishes();  }, 5000);
     })();
 
   })();
