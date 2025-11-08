@@ -351,5 +351,66 @@ Kehadiran dan doa restu Anda merupakan hadiah terindah bagi kami.
       thanksPage.style.display = 'none';
     })();
   </script>
+
+  <!-- WISHES SECTION -->
+  <section id="wishes" class="wishes-section" style="text-align:center; padding:40px 20px; background:#fffaf5;">
+    <h2 style="font-size:1.8em; color:#b69054; margin-bottom:10px;">Kirimkan Ucapan & Doa</h2>
+    <p style="color:#444;">Ucapan dan doa dari kamu sangat berarti bagi kami ❤️</p>
+
+    <form id="wishesForm" style="max-width:500px; margin:30px auto; text-align:left;">
+      <label>Nama</label>
+      <input type="text" name="nama" placeholder="Nama Anda" required
+             style="width:100%; padding:10px; border-radius:8px; border:1px solid #ccc; margin-bottom:12px;">
+
+      <label>Ucapan / Doa</label>
+      <textarea name="ucapan" placeholder="Ucapan / Doa Anda" required
+                style="width:100%; padding:10px; border-radius:8px; border:1px solid #ccc; margin-bottom:12px;"></textarea>
+
+      <label>Konfirmasi Kehadiran</label>
+      <select name="kehadiran" required
+              style="width:100%; padding:10px; border-radius:8px; border:1px solid #ccc; margin-bottom:20px;">
+        <option value="">Pilih...</option>
+        <option value="Hadir">Hadir</option>
+        <option value="Tidak Hadir">Tidak Hadir</option>
+        <option value="Masih Ragu">Masih Ragu</option>
+      </select>
+
+      <button type="submit"
+              style="width:100%; background-color:#b69054; color:#fff; font-weight:bold;
+                     padding:12px; border:none; border-radius:8px; cursor:pointer;">
+        Kirim Ucapan
+      </button>
+    </form>
+
+    <p id="responseMsg" style="margin-top:15px; font-weight:bold; color:#b69054;"></p>
+  </section>
+
+  <script>
+  const scriptURL = "https://script.google.com/macros/s/AKfycbwJ8P0TShC-37Dz6pcc2xnaeAuq0KYe6jQkY6KMg9wf_w9_ithieXhW9HTSYuhehnVI7w/exec";
+
+  document.getElementById("wishesForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const data = new FormData(form);
+    const responseMsg = document.getElementById("responseMsg");
+
+    responseMsg.innerText = "Mengirim...";
+
+    try {
+      const res = await fetch(scriptURL, { method: "POST", body: data });
+      const result = await res.json();
+
+      if (result.status === "success") {
+        responseMsg.innerText = "✅ Terima kasih! Ucapan kamu sudah terkirim.";
+        form.reset();
+      } else {
+        responseMsg.innerText = "⚠️ Terjadi kesalahan. Silakan coba lagi.";
+      }
+    } catch (error) {
+      responseMsg.innerText = "❌ Gagal terhubung ke server. Periksa koneksi internet.";
+    }
+  });
+  </script>
+
 </body>
 </html>
